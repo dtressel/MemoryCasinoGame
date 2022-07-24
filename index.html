@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Casino Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patua+One&family=Shrikhand&family=Yellowtail&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- Popups: -->
+
+    <!-- Choose Game Difficulty Popup -->
+
+    <div id="choose-game-difficulty" class="popup element-off">
+        <div id="choose-game-difficulty-closeX" class="closeX">&#10006</div>
+        <h4>Play</h4>
+        <label>Choose game difficulty:</label><br>
+        <button type="button" id="easy">Easy</button><br>
+        <label>(10 cards)</label><br>
+        <button type="button" id="intermediate">Intermediate</button><br>
+        <label>(16 cards)</label><br>
+        <button type="button" id="difficult">Difficult</button><br>
+        <label>(22 cards)</label>
+    </div>
+
+    <!-- Choose Wallet Popup -->
+
+    <div id="choose-wallet" class="popup element-off">
+        <form>
+            <div id="choose-wallet-closeX" class="closeX">&#10006</div>
+            <h4>Play</h4>
+            <p>Use Current Wallet?</p>
+            <input type="radio" name="choose-wallet" value="current-wallet" id="choose-wallet-current" checked>
+            <label for="choose-wallet-current">Yes ($<span id="choose-wallet-current-wallet-amount"></span>)</label>
+            <br><br>
+            <input type="radio" name="choose-wallet" value="reset-wallet" id="choose-wallet-reset">
+            <label for="choose-wallet-reset">Reset Wallet to $1,000</label>
+            <br><br>
+            <button type="submit" id="choose-wallet-submit">Submit</button>
+        </form>
+    </div>
+
+     <!-- Start Wallet Popup -->
+
+    <div id="start-wallet" class="popup element-off">
+        <form>
+            <div id="start-wallet-closeX" class="closeX">&#10006</div>
+            <h4>Play</h4>
+            <p>
+                Your current wallet is valued at $1,000. 
+                To make a turn you will need to place a bet per turn. 
+                Choose your bet amount wisely. 
+                Your bet amount must be in multiples of $10.
+            </p>
+            <button type="button" id="start-wallet-ok">OK</button>
+        </form>
+    </div>
+
+    <!-- Choose Bet Popup -->
+
+    <div id="choose-bet" class="popup element-off">
+        <form>
+            <div id="choose-bet-closeX" class="closeX">&#10006</div>
+            <h4>Play</h4>
+            <label for="choose-bet">Choose Bet Amount:</label><br><br>
+            <input type="number" id="choose-bet-input" step="10" min="10" value="100"><br>
+            <button type="submit" id="choose-bet-submit">Submit</button>
+            <p id="invalid-notification"></p>
+        </form>
+    </div>
+
+    <!-- Game Over Popup -->
+
+    <div id="game-over" class="popup element-off">
+        <div id="game-over-closeX" class="closeX">&#10006</div>
+        <p>Congatulations!<br>You matched all cards!</p>
+        <p>You <span id="won-lost"></span> $<span id="game-over-amount-won-lost"></span>!</p>
+        <p>Your wallet is now worth<br>$<span id="game-over-wallet-value"></span></p>
+        <button type="button" id="game-over-play-again">Play Again</button><br>
+        <button type="button" id="game-over-home-screen">Home Screen</button>
+    </div>
+
+    <!-- Bust Popup -->
+
+    <div id="bust-popup" class="popup element-off">
+        <div id="bust-closeX" class="closeX">&#10006</div>
+        <p>You went bust!</p>
+        <p>You don't have enough money to make another bet!</p>
+        <button type="button" id="bust-play-again">Play Again</button><br>
+        <button type="button" id="bust-home-screen">Home Screen</button>
+    </div>
+
+    <!-- Home Screen: -->
+
+    <h3 class="home-screen center">Memory</h3>
+    <h2 id = flashing-letters class="home-screen center yellow">
+        <span class="spaced">C</span>
+        <span class="spaced">a</span>
+        <span class="spaced">s</span>
+        <span class="spaced">i</span>
+        <span class="spaced">n</span>
+        <span class="spaced">o</span>
+    </h2>
+    <h3 class="home-screen center">Game</h3>
+    <div class="home-screen center home-screen-button-div">
+        <button type="button" id="home-screen-play" class="home-screen-button">Play</button><br>
+        <button type="button" id="home-screen-rules" class="home-screen-button">Rules</button><br>
+        <button type="button" id="home-screen-about" class="home-screen-button">About the Creator</button>
+    </div>
+
+    <!-- Rules Screen: -->
+
+    <h3 class="rules-screen element-off">Rules:</h3>
+    <p class="rules-screen element-off">
+        The goal of Memory Casino Game is to find the matching pairs in the dealt cards.
+        Based on the game difficulty that you choose, 10, 16, or 22 cards will be placed
+        face-down on the table.<br><br>By using two decks of cards, each card will have an exact
+        match placed somewhere on the table. Bet a dollar amount per turn to turn two 
+        cards of your choosing. If those two cards match, the cards will remain face-up. 
+        If the two cards don't match, both cards will be turned back over. Once you have
+        found all pairs, the game will end.<br><br>For each pair that you match, you will win a
+        bonus. The amount won per matched pair are calculated based on the game difficulty 
+        and the type of card matched. The higher the difficulty the higher the bonuses. 
+        Also, within each game type, the Ace of Spades pair has the highest bonus, followed 
+        by the rest of the Aces, followed by the face cards, and finally, followed by the 
+        number cards, which recieve the lowest bonus. If you run out of money during a game, 
+        you bust and the game is over! 
+    </p>
+
+    <!-- About Screen: -->
+
+    <h3 class="about-screen element-off">About the Creator:</h3>
+    <p class="about-screen element-off">
+        Memory Casino Game was created by Daniel Tressel. 
+        This is one of the first exercises that he had to do for the Springboard software 
+        Engineering Bootcamp that he's currently taking part in. This exercise is supposed 
+        to be a simple memory matching game with basic functionality, but he decided 
+        to add some spice and turn it into a casino game. Daniel wanted to challenge himself 
+        and see how much he can do in the alotted time for this exercise. He went a bit overboard, 
+        but, nonetheless, he hopes that you enjoy the game. In addition to being a software 
+        egineer, Daniel is a professional classical cellist and composer. He's kept busy by his 
+        two-year old daughter and plays chess competetively for fun.
+    </p>
+    <button type="button" id="back-home" class="about-screen rules-screen element-off about-rules-button">Back to Homepage</button>
+        <!-- (Above button is used for About Screen and Rules Screen) -->
+
+    <!-- Play Screen: -->
+
+    <h1 class="play-screen center element-off">Memory Casino Game</h1>
+    <div id="game-header" class="play-screen element-off">
+        <div id="game-header-left" class="play-screen element-off">
+            <p></p>
+        </div>
+        <div id="game-header-center" class="play-screen element-off">
+            <p></p>
+        </div>
+        <div id="game-header-right" class="play-screen element-off">
+            <p class="center">Wallet: $<span id="money-display"></span></p>
+            <div id="plus-div0" class="minus-plus plus"></div>
+            <div id="minus-div0" class="minus-plus minus" ></div>
+            <div id="plus-div1" class="minus-plus plus"></div>
+            <div id="minus-div1" class="minus-plus minus"></div>
+        </div>
+    </div>
+    <div id="play-main" class="play-screen element-off">
+        <div id="game-board" class="play-screen unclickable element-off"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

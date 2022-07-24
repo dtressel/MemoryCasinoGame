@@ -1,0 +1,239 @@
+body {
+    background-color:rgb(94, 93, 99);
+    color: white;
+}
+
+.center {
+    text-align: center;
+}
+
+input[type = "number"] {
+    width: 100px;
+}
+
+button {
+    margin: 15px 5px 5px;
+}
+
+.home-screen-button {
+    font-size: 17px;
+    padding: 10px;
+    background-color:rgb(103, 173, 103);
+    border: 3px solid gray;
+}
+
+.about-rules-button {
+    font-size: 14px;
+    margin: 10px;
+    padding: 10px;
+    background-color:rgb(103, 173, 103);
+    border: 3px solid gray;
+}
+
+.home-screen-button:first-of-type {
+    padding: 15px 35px;
+    font-size: 20px;
+    margin: -7px 0 27px;
+}
+
+#game-over button {
+    margin-top: 5px;
+}
+
+.rowContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.element-off {
+    display: none;
+}
+
+.element-on {
+    display: unset;
+}
+
+.hidden {
+    display: none;
+}
+
+.unclickable {
+    pointer-events: none;
+}
+
+.match-border {
+    box-shadow: 0 0 20px 5px rgb(80, 95, 255);
+}
+
+.minus {
+    color: rgb(112, 15, 15);
+}
+
+.plus {
+    color: rgb(10, 61, 10);
+}
+
+.minus-plus {
+    position: absolute;
+    top: 5%;
+    left: 52%;
+    opacity: 1;
+    transition: top 2s, opacity 2s;
+}
+
+.minus-plus-transition {
+    top: -40%;
+    opacity: 0;
+}
+
+.card-div {
+    margin: 5px;
+}
+
+.card {
+    border-radius: 5%;
+    border: 2px solid lightgray;
+}
+
+.home-screen-button:hover, .about-rules-button:hover {
+    background-color:rgb(231, 231, 116);
+    box-shadow: 0 0 20px 3px rgb(231, 231, 116);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.card10 {
+    width: 8vw;
+}
+
+.card16 {
+    width: 7vw;
+}
+
+.card22 {
+    width: 5.5vw;
+}
+
+#game-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+
+#play-main {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr; 
+}
+
+#game-header-right {
+    position: relative;
+}
+
+#game-board {
+    grid-column: 2 / 3;
+    padding: 0 2vw 12vmin;
+    border-top-right-radius: 2%;
+    border-top-left-radius: 2%;
+    border-bottom-right-radius: 30vmin;
+    border-bottom-left-radius: 30vmin;
+    background-color: rgb(103, 173, 103);
+}
+
+#start-wallet-closeX {
+    visibility: hidden;
+}
+
+.closeX:hover {
+    cursor: pointer;
+}
+
+.closeX {
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: right;
+    margin: 0;
+}
+
+h3 {
+    font-size: 50px;
+    color: rgb(103, 173, 103);
+    font-family: 'Yellowtail', cursive;
+    margin: 30px;
+}
+
+h2 {
+    font-size: 50px;
+    margin: -20px;
+    font-family: 'Patua One', cursive;
+}
+
+h4 {
+    font-size: 30px;
+    color: rgb(103, 173, 103);
+    font-family: 'Yellowtail', cursive;
+    margin: 0 0 10px;
+}
+
+.yellow {
+    color: rgb(231, 231, 116);
+    box-shadow: 0 0 25px 5px rgb(231, 231, 116);
+}
+
+.spaced {
+    margin: 3px;
+}
+
+/*.popup must always stay before .popup-visible-no-animate and .popup-visible-animate in this stylesheet*/
+.popup {
+    text-align: center;
+    position: absolute;
+    background-color: rgb(94, 93, 99);
+    border-radius: 5%;
+    padding: 0 1%;
+    z-index: 3;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: -350px;
+    bottom: -350px;
+    height: 300px;
+    width: 175px;
+    box-shadow: -5px 2px 30px 2px rgb(50, 50, 50);
+}
+
+.popup-visible-no-animate {
+    top: 40px;
+    bottom: 40px;
+}
+
+.popup-visible-animate {
+    animation: popup 1s ease-in 1 0s forwards;
+}
+
+@keyframes popup {
+    0% {
+        top: -350px;
+        bottom: -350px;
+    }
+    60% {
+        top: 40px;
+        bottom: 40px;
+    }
+    70% {
+        top: 30px;
+        bottom: 30px;
+    }
+    80% {
+        top: 40px;
+        bottom: 40px;
+    }
+    90% {
+        top: 35px;
+        bottom: 35px;
+    }
+    100% {
+        top: 40px;
+        bottom: 60px;
+    }
+}
