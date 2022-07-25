@@ -28,7 +28,14 @@ const homeScreenElements = document.querySelectorAll('.home-screen');
 const rulesScreenElements = document.querySelectorAll('.rules-screen');
 const aboutScreenElements = document.querySelectorAll('.about-screen');
 const playScreenElements = document.querySelectorAll('.play-screen');
-const allScreenElements = [homeScreenElements, rulesScreenElements, aboutScreenElements, playScreenElements];
+const playScreenAfterGameElements = document. querySelectorAll('.play-screen-after-game');
+const allScreenElements = [
+    homeScreenElements, 
+    rulesScreenElements, 
+    aboutScreenElements, 
+    playScreenElements, 
+    playScreenAfterGameElements
+];
 
 const difficultyPopup = document.getElementById('choose-game-difficulty');
 const betPopup = document.getElementById('choose-bet');
@@ -52,6 +59,7 @@ const bustPlayAgainButton = document.getElementById('bust-play-again');
 const bustHomeScreenButton = document.getElementById('bust-home-screen');
 const chooseWalletSubmitButton = document.getElementById('choose-wallet-submit');
 const startWalletOkButton = document.getElementById('start-wallet-ok');
+const backHomeFromPlay = document.getElementById('back-home-from-play');
 const closeXButtons = document.querySelectorAll('.closeX');
 
 const invalidNotification = document.getElementById('invalid-notification');
@@ -78,6 +86,7 @@ bustPlayAgainButton.addEventListener('click', showHomePageAndDifficultyPopup);
 bustHomeScreenButton.addEventListener('click', showHomePage);
 chooseWalletSubmitButton.addEventListener('click', chooseWallet);
 startWalletOkButton.addEventListener('click', showBetPopup);
+backHomeFromPlay.addEventListener('click', showHomePage);
 for (const closeX of closeXButtons) {
     closeX.addEventListener('click', closePopup);
 }
@@ -477,6 +486,7 @@ function gameOver(earlyWallet) {
     gameOverPopupAmountSpan.textContent = walletAmountChange.toLocaleString('en-US');
     gameOverWalletValueSpan.textContent = earlyWallet.toLocaleString('en-US');
     animatePopup(gameOverPopup);
+    setTimeout(addAfterGameElements, 800);
 }
 
 function bust() {
@@ -486,9 +496,16 @@ function bust() {
     if (walletGoal < 11) {
         setTimeout(walletBustChange, 1000);
     }
+    setTimeout(addAfterGameElements, 800);
 }
 
 function walletBustChange () {
     wallet = 1000;
     walletGoal = 1000;
+}
+
+function addAfterGameElements () {
+    for (const element of playScreenAfterGameElements) {
+        element.classList.remove('element-off');
+    }
 }
