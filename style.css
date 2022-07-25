@@ -146,6 +146,24 @@ button:hover {
     background-color: rgb(103, 173, 103);
 }
 
+@media only screen and (max-width: 600px) {
+    #game-board {
+        grid-column: 1 / 4;
+    }
+
+    .card10 {
+        width: 10vw;
+    }
+    
+    .card16 {
+        width: 9vw;
+    }
+    
+    .card22 {
+        width: 8vw;
+    }
+}
+
 #start-wallet-ok {
     margin-top: 0;
 }
