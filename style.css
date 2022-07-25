@@ -13,6 +13,7 @@ input[type = "number"] {
 
 button {
     margin: 15px 5px 5px;
+    color: black;
 }
 
 .home-screen-button {
@@ -138,6 +139,10 @@ button:hover {
     border-bottom-right-radius: 30vmin;
     border-bottom-left-radius: 30vmin;
     background-color: rgb(103, 173, 103);
+}
+
+#start-wallet-ok {
+    margin-top: 0;
 }
 
 #start-wallet-closeX {
