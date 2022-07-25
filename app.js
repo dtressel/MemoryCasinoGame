@@ -14,6 +14,8 @@ let numberCardMultiplier;
 let faceCardMultiplier;
 let aceMultiplier;
 let aceOfSpadesMultiplier;
+let timeoutId;
+let intervalId;
 
 const gameBoardDiv = document.querySelector('#game-board');
 const plusDiv0 = document.querySelector('#plus-div0');
@@ -386,6 +388,8 @@ function onCardClick(index, event) {
             } else {
                 typeDiv = minusDiv1;
             }  
+            clearTimeout(timeoutId);
+            clearInterval(intervalId);
             wallet = walletGoal;
             walletGoal -= value;
         } else {
@@ -395,6 +399,8 @@ function onCardClick(index, event) {
             } else {
                 typeDiv = plusDiv1;
             }  
+            clearTimeout(timeoutId);
+            clearInterval(intervalId);
             wallet = walletGoal;
             walletGoal += value;
         }
@@ -409,8 +415,8 @@ function onCardClick(index, event) {
         function walletTransition(type, value) {
             let delay = Math.floor(1000 / value);
             let length = delay * value;
-            const id = setInterval(rollWallet, delay, type);
-            setTimeout(stopRoll, length, id);
+            intervalId = setInterval(rollWallet, delay, type);
+            timeoutId = setTimeout(stopRoll, length);
         }
 
             function rollWallet(type) {
@@ -423,8 +429,8 @@ function onCardClick(index, event) {
                 }
             }
 
-            function stopRoll(id) {
-                clearInterval(id);
+            function stopRoll() {
+                clearInterval(intervalId);
                 setWallet(walletGoal);
                 wallet = walletGoal;
             }
